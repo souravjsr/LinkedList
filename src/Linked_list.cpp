@@ -23,25 +23,28 @@ public:
 	Nodes(){
 		cout << "Constructor called" << "\n";
 	}
+
 	~Nodes(){
+	        delete head, tmp,
 		cout << "Destructor called"<< "\n";
 	}
+
 	void linkedListGenerator(){
-			cout << "Enter the numbers you wanna add to Linked list --> ";
-			cin >> num;
-			head = (nodestruct*)malloc(sizeof(nodestruct));
-                        cout << " Enter the value --> ";
-                        cin >> userData;
-                        head->data = userData;
-                        head->nextPtr = NULL;
-			for (; counter < num; counter++){
-			    tmp = (nodestruct*)malloc(sizeof(nodestruct));
-                            cout << " Enter the value --> ";
-                            cin >> userData;
-                            tmp->data = userData;
-                            tmp->nextPtr = head;
-                            head = tmp;
-			}
+                cout << "Enter the numbers you wanna add to Linked list --> ";
+                cin >> num;
+                head = (nodestruct*)malloc(sizeof(nodestruct));
+                cout << " Enter the value --> ";
+                cin >> userData;
+                head->data = userData;
+                head->nextPtr = NULL;
+                for (; counter < num; counter++){
+                    tmp = (nodestruct*)malloc(sizeof(nodestruct));
+                    cout << " Enter the value --> ";
+                    cin >> userData;
+                    tmp->data = userData;
+                    tmp->nextPtr = head;
+                    head = tmp;
+                }
 
 	}
 
@@ -59,9 +62,10 @@ public:
 
 int main(void) {
 
-	Nodes classObj;
-	classObj.linkedListGenerator();
-	classObj.linkedListPublisher();
+	Nodes *classObj = new Nodes();
+	classObj->linkedListGenerator();
+	classObj->linkedListPublisher();
+	delete classObj;
 	return 0;
 
 }
